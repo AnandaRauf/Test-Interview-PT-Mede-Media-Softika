@@ -12,7 +12,7 @@ How to use:
 - [Download Python](https://www.python.org/)
 -  Setting Environment Variabel in Path and System Windows: Path/PythonVersion, and Path/PythonVersion/Scripts 
 -  [Downlaod Cursor SH](https://cursor.sh/)
--  Install library and Flask Framework by using command Pip: pip install flask, pip install request, and pip install mysqlconnector
+-  Install library and Flask Framework by using command Pip: pip install flask, pip install request, and pip install mysql-connector
 -  Run by using CMD : cd directoryProject and then python app.py or py app.py or flask run.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
