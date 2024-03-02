@@ -4,13 +4,15 @@ Test Interview PT Mede Media Softika
 Website Development Komoditas developed by using Flask Web Framework
 
 Branch projects:
-1.[WebDev](https://)
+
+- [WebDev](https://github.com/AnandaRauf/Test-Interview-PT-Mede-Media-Softika/tree/WebDevBeta)
 
 How to use:
-1, [Download Python](https://www.python.org/)
-2. Setting Environment Variabel in Path and System Windows: Path/PythonVersion, and Path/PythonVersion/Scripts 
-3. [Downlaod Cursor SH](https://cursor.sh/)
-4. Install library and Flask Framework by using command Pip: pip install flask, pip install request, and pip install mysqlconnector
+
+- [Download Python](https://www.python.org/)
+-  Setting Environment Variabel in Path and System Windows: Path/PythonVersion, and Path/PythonVersion/Scripts 
+-  [Downlaod Cursor SH](https://cursor.sh/)
+-  Install library and Flask Framework by using command Pip: pip install flask, pip install request, and pip install mysqlconnector
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
