@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Website Test Interview PT Mede Media Softika | Lihat Transaksi</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Website Test Interview PT Mede Media Softika,Lihat Transaksi" />
+    <link rel="icon" href="{{ url_for('static', filename='asset/favicon.ico') }}" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lihat Transaksi</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tanggal Produksi</th>
+                    <th>Kode Komoditas</th>
+                    <th>Nama Komoditas</th>
+                    <th>Jumlah</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaksi in data %}
+                <tr>
+                    <td>{{ transaksi.tanggal }}</td>
+                    <td>{{ transaksi.komoditas_kode }}</td>
+                    <td>{{ transaksi.nama_komoditas }}</td>
+                    <td>{{ transaksi.jumlah }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/cetak_data_transaksi" class="button">Cetak Transaksi</a>
+        <a href="{{ url_for('lihat_data_produksi') }}" onclick="alert('Pindah ke Daftar Produksi!'); return true" target="_blank" class="button">Kembali</a>
+    </div>
+</body>
+</html>

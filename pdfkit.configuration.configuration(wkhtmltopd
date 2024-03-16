@@ -1,0 +1,2 @@
+config = pdfkit.configuration(wkhtmltopdf='C:\Program Files (x86)\wkhtmltopdf\bin\wkhtmltopdf.exe')
+pdf = pdfkit.from_string(html, False, configuration=config)
