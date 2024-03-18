@@ -15,6 +15,8 @@ How to use:
 -  Setting Environment Variabel in Path and System Windows: Path/PythonVersion, and Path/PythonVersion/Scripts 
 -  [Downlaod Cursor SH](https://cursor.sh/)
 -  Install library and Flask Framework by using command Pip: pip install flask, pip install request, pip install pdfkit, pip install wkhtmltopdf, and pip install mysql-connector
+- [Download WKHTMLTOPDF](https://wkhtmltopdf.org/downloads.html)
+- Setting Path Wkhtmltopdf in app.py script.
 -  Run by using CMD : cd directoryProject and then python app.py or py app.py or flask run.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
