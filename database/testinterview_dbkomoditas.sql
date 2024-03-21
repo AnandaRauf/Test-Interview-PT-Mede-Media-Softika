@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 10:14 AM
+-- Generation Time: Mar 21, 2024 at 06:55 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -41,7 +41,8 @@ INSERT INTO `daftar_komoditas` (`komoditas_kode`, `komoditas_nama`) VALUES
 ('K002', 'Jagung'),
 ('K003', 'Gandum'),
 ('K004', 'Bawang'),
-('K005', 'Cabe');
+('K005', 'Cabe'),
+('K006', 'Padi');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

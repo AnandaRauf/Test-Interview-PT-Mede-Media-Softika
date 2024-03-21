@@ -44,24 +44,28 @@ def get_data_komoditas():
         database='testinterview_dbkomoditas'
     )
     mycursor = mydatabase.cursor()
-    mycursor.execute("SELECT * FROM daftar_produksi")
+    mycursor.execute("SELECT komoditas_kode,komoditas_nama FROM daftar_komoditas")
     data= mycursor.fetchall()
     mycursor.close()
     mydatabase.close()
     return data
 def get_data_produksi():
-    mydatabase = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        passwd='',
-        database='testinterview_dbkomoditas'
-    )
-    mycursor = mydatabase.cursor()
-    mycursor.execute("SELECT komoditas_kode,tanggal,nama_komoditas,jumlah FROM daftar_produksi")
-    data= mycursor.fetchall()
-    mycursor.close()
-    mydatabase.close()
-    return data
+    try:
+        mydb = mysql.connector.connect(
+            host='localhost',
+            user='root',
+            passwd='',
+            database='testinterview_dbkomoditas'
+        )
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT * FROM daftar_produksi")
+        data = mycursor.fetchall()
+        mycursor.close()
+        mydb.close()
+        return data
+    except Exception as e:
+        print("Error SQL:", e)
+        return None
 @app.route('/')
 def beranda():
     alert = request.args.get('alert')
@@ -100,28 +104,27 @@ def tambah_datakomoditas():
     # Mengirimkan alert peringatan data berhasil disimpan
     return render_template('forms_komoditas.html')
    
-@app.route('/tambah_dataproduksi', methods=['GET','POST'])
+@app.route('/tambah_dataproduksi', methods=['POST'])
 def tambah_dataproduksi():
     if request.method == 'POST':
         Kode_Komoditas = request.form['kodekomoditas']
         Tanggal_produksi = request.form['tanggalproduksi']
         Nama_komoditas = request.form['namakomoditas']
         Jumlah_produksi = request.form['jumlahproduksi']
-    
-    
-    try:
-        mydatabase = mysql.connector.connect(host='localhost', user='root', passwd='', database='testinterview_dbkomoditas')
-        mycursor = mydatabase.cursor()
-        sql = "INSERT INTO daftar_produksi (komoditas_kode,tanggal, nama_komoditas,jumlah) VALUES (%s, %s)"  # perbaikan disini
-        val = (Kode_Komoditas,Tanggal_produksi, Nama_komoditas,Jumlah_produksi)  # perbaikan disini
-        mycursor.execute(sql, val)
-        mydatabase.commit()
-        mycursor.close()
-        mydatabase.close()
-        return redirect(url_for('lihat_data_produksi', alert='Data produksi berhasil disimpan!'))
-    except:
-        return 'Terjadi Kesalahan saat menyimpan data'
-    # Mengirimkan alert peringatan data berhasil disimpan
+
+        try:
+            mydatabase = mysql.connector.connect(host='localhost', user='root', passwd='', database='testinterview_dbkomoditas')
+            mycursor = mydatabase.cursor()
+            sql = "INSERT INTO daftar_produksi (komoditas_kode, tanggal, nama_komoditas, jumlah) VALUES (%s, %s, %s, %s)"
+            val = (Kode_Komoditas, Tanggal_produksi, Nama_komoditas, Jumlah_produksi)
+            mycursor.execute(sql, val)
+            mydatabase.commit()
+            mycursor.close()
+            mydatabase.close()
+            return redirect(url_for('lihat_data_produksi', alert='Data produksi berhasil disimpan!'))
+        except Exception as e:
+            return f'Terjadi Kesalahan saat menyimpan data: {str(e)}'
+
     return render_template('forms_produksi.html')
 
 @app.route('/lihat_data_produksi')
@@ -149,11 +152,11 @@ def form_produksi():
 def lihat_data_transaksi():
     #alert = request.args.get('alert')
     # Mengambil data dari database
-    #data = get_data_produksi()
-    #if data is None:
-     #   return "Gagal mengambil data dari kolum nama_komoditas tabel daftar_produksi"
+    data = get_data_produksi()
+    if data is None:
+       return "Gagal mengambil data dari kolum nama_komoditas tabel daftar_produksi"
     
-    return render_template('lihat_transaksi.html', title='Website Test Interview PT Mede Media Softika | Data Transaksi')
+    return render_template('lihat_transaksi.html', data=data, title='Website Test Interview PT Mede Media Softika | Data Transaksi')
 
 @app.route('/cetak_data_transaksi', methods=['GET', 'POST'])
 def cetak_data_transaksi():

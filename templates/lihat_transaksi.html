@@ -66,10 +66,10 @@
             <tbody>
                 {% for transaksi in data %}
                 <tr>
-                    <td>{{ transaksi.tanggal }}</td>
-                    <td>{{ transaksi.komoditas_kode }}</td>
-                    <td>{{ transaksi.nama_komoditas }}</td>
-                    <td>{{ transaksi.jumlah }}</td>
+                    <td>{{ transaksi[1] }}</td>
+                    <td>{{ transaksi[0] }}</td>
+                    <td>{{ transaksi[2] }}</td>
+                    <td>{{ transaksi[3] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
